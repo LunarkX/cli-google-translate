@@ -1,0 +1,43 @@
+LANGUAGE CODES SUPPORT
+
+This utility supports up to 33 of the world's most famous languages.
+The languages have been handpicked based on the following two criteria:
+        1. What are the top most famous languages in the world?
+        2. Can Google translate a language added to this list?
+Visit this site to learn more: https://vistawide.com/languages/top_30_languages.htm
+
+Use these language codes as arguments to the 'lc' and 'lcs' flags
+
+HUMAN LANGUAGE                      LANGUAGE CODE
+Hindi                               hi
+Spanish                             es
+English                             en
+Arabic                              ar
+Portuguese                          pt
+Russian                             ru
+Japanese                            ja
+German/ Dutch                       de
+Panjabi/ Punjabi                    pa
+Javanese                            jv
+Korean                              ko
+Vietnamese                          vi
+Telugu                              te
+Marathi                             mr
+Tamil                               ta
+French                              fr
+Urdu                                ur
+Italian                             it
+Turkish                             tr
+Persian                             fa
+Gujarati                            gu
+Polish                              pl
+Ukrainian                           uk
+Malayalam                           ml
+Kannada                             kn
+Burmese                             my
+Thai                                th
+Swahili                             sw
+Afrikaans                           af
+Amharic                             am
+Hebrew                              he
+Swedish                             sv
