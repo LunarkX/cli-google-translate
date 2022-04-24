@@ -12,8 +12,9 @@ public class Translate implements Runnable {
     String phrase;
     
     //option-parameter- target language
-    @Option(names = { "-t" }, paramLabel = "TARGET LANGUAGE", description = "Language being translated to.")
-    String target;
+    @Option(names = { "-lc, --language-code" }, paramLabel = "LANGUAGE CODE", 
+            description = "Language being translated to.")
+    String lc;
     
     //option- activate interractive mode
     @Option(names = { "-i, --interractive" }, description = "Run this utility in interractive mode.")
@@ -23,17 +24,18 @@ public class Translate implements Runnable {
     @Option(names = { "-l, --log" }, description = "Allow for logging of a translation")
     Boolean logTranslation;
     
-    //option-parameter- allow for targetting !> 5 languages at once
-    @Option(names = "-m", paramLabel = "MULTIPLE LANGUAGES", arity = "1...5",
+    //option-parameter- allow for targetting !> 5 but >= 2 languages at once
+    //cannot be used with -lc flag
+    @Option(names = { "-lcs, --language-codes" }, paramLabel = "MULTIPLE LANGUAGE CODES", arity = "1...5",
             description = "Choose up to five languages to translate into.")
-    String multiple;
+    String lcs;
     
     @Override
     public void run() {
-        System.out.print("Phrase: " + phrase + "Target: " + target);
+        System.out.print("Phrase: " + phrase + "Target: " + lc);
     }
     
     public static void main(String[] args) {
-        new CommandLine(new Translate()).execute("-p", "Hello World", "-t", "ru");
+        new CommandLine(new Translate()).execute("-h");
     }
 }
