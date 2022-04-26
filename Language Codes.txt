@@ -41,3 +41,10 @@ Afrikaans                           af
 Amharic                             am
 Hebrew                              he
 Swedish                             sv
+
+
+NOTE ON HOW TO USE THE COMMAND OPTIONS(FLAGS)
+1. The -i flag cannot be used with any other flag. It simply launches the interactive mode
+2. In all other cases(i.e when the -i flag is not used), the -p flag must be used.
+3. When the -p flag is used, either the -lc or the -lcs flag should be used, but not both at once.
+4. when the -lcs flag is used, it must have not more than 5 parameters and not less than 1.
