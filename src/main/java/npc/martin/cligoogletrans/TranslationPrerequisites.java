@@ -2,11 +2,11 @@ package npc.martin.cligoogletrans;
 
 
 import java.util.HashMap;
-import kong.unirest.JsonNode;
+import java.util.List;
 
-public abstract class TranslationProperties extends Translate {
+public abstract class TranslationPrerequisites extends Translate {
     //hash map for the language-code pairs
-    protected static HashMap<String, String> languageCodePair = new HashMap<>();
+    protected static final HashMap<String, String> languageCodePair = new HashMap<>();
     
     //method to populate the hashmap
     protected static void createPairs() {
@@ -46,13 +46,13 @@ public abstract class TranslationProperties extends Translate {
     
     //nested interface to handle single-target request
     interface SingeTargetRequest {
-        public abstract void makeRequest();
+        public abstract void makeRequest(String ph, String tar);
         public abstract void destructureJson();
     }
     
     //nested interface to handle multi-target requests
     interface MultiTargetRequest {
-        public abstract void makeMutipleRequests();
+        public abstract void makeMutipleRequests(String ph, List<String> lc);
         public abstract void destructureJson();
     }
 }
