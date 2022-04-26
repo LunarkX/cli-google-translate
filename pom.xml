@@ -63,7 +63,7 @@
                 <manifest>
                   <addClasspath>true</addClasspath>
                   <mainClass>npc.martin.cligoogletrans.Translate</mainClass>
-                  <classpathPrefix>dependency-jars/</classpathPrefix>
+                  <classpathPrefix>dependency-lib/</classpathPrefix>
                 </manifest>
               </archive>
             </configuration>
