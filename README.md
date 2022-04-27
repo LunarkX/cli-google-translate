@@ -15,8 +15,8 @@ However, over time I saw it could be useful and designed it to work not just for
 >**You will also be using my API key for translation** which may bill me. Also, the multiple people that have downloaded the same will be fast depleting the 500 char cap. So consider using the first procedure described below for maximum comfortability when using this utility. Otherwise, proceed direct to procedure B, ignoring procedure A.
 
 ### PROCEDURE A
-1. Download the download the source code zip file from this repository.
-2. Extract the zip file an you should get a `cli-google-translate-master` folder inside.
+1. Download the download the `cligoogletrans-sourcecode.zip` file from this repository.
+2. Extract the zip file an you should get a `cligoogletrans-sourcecode` folder inside.
 3. In the folder, navigate to `src/main/java/npc/martin/cligoogletrans/`. In there, there should be a number of Java source files. We will deal with only two.
 4. Open the `HandleSingleTarget.java` file in any text editor an navigate to the lines 18-21. Online 21 specifically, replace _API KEY REMOVED FOR SECURITY REASONS- USE YOUR RAPID API KEY_ with your RAPID API KEY like this:
 ```
