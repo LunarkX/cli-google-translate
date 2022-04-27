@@ -8,12 +8,13 @@ public class HandleSingleTarget extends TranslationPrerequisites implements Tran
     public void makeRequest(String ph, String tar) {
         //first we confirm that the langCode exists in our list of supported languages
         if(languageCodePair.containsKey(tar)) {
-            //if it exists, build the String for the HTTP request body
+            //if it exists, build the String for the HTTP request body, and store the key value in a String somewhere
             String bodyString = "q=" + ph + "&target=" + tar;
+            String targetLanguage = languageCodePair.get(tar);
             
             //then create and send the request- the returned response is a GoogleTranslate JSON
             //so we map the request to that using Unirest's inbuilt mapper.
-            GoogleTranslateObject translatedObj = Unirest.post("https://google-translate1.p.rapidapi.com/language/translate/v2")
+            GoogleTranslateObject translateObj = Unirest.post("https://google-translate1.p.rapidapi.com/language/translate/v2")
                 .header("content-type", "application/x-www-form-urlencoded")
                 .header("Accept-Encoding", "application/gzip")
                 .header("X-RapidAPI-Host", "google-translate1.p.rapidapi.com")
@@ -23,18 +24,21 @@ public class HandleSingleTarget extends TranslationPrerequisites implements Tran
                 .asObject(GoogleTranslateObject.class)
                 .getBody();
             
-            destructureJson(ph,translatedObj);
+            destructureJson(ph, targetLanguage, translateObj);
             
         } else {
-            System.out.println("Error! Target language not supported. See LanguageCodes file for help on supported languages.");
+            System.out.println("Fatal! Language code(" + tar + ") not supported. See LanguageCodes file for help on supported languages. \n");
         }
     }
 
     @Override
-    public void destructureJson(String sourceText, GoogleTranslateObject transJSON) {
-        String translatedTextString = transJSON.getData().getTranslations().get(0).translatedText;
+    public void destructureJson(String sourceText, String targetLang, GoogleTranslateObject transJSON) {
         System.out.println("Entered Source Text: " + sourceText);
-        System.out.println("Detected Source Language: " + transJSON.getData().getTranslations().get(0).getDetectedSourceLanguage());
-        System.out.println("Translated Text: " + translatedTextString);
+        
+        String detectedSrcLang = transJSON.getData().getTranslations().get(0).getDetectedSourceLanguage();
+        System.out.println("Detected Source Language: " + languageCodePair.get(detectedSrcLang));
+        
+        String translatedTextString = transJSON.getData().getTranslations().get(0).translatedText;
+        System.out.println("Translated Text[" + targetLang + "]: " + translatedTextString);
     }   
 }
