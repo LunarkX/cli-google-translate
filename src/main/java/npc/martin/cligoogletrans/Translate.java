@@ -90,9 +90,9 @@ public class Translate implements Runnable {
     }
     
     public static void main(String[] args) {
-        /*int exitCode = new CommandLine(new Translate()).execute(args);
-        System.exit(exitCode);*/
+        int exitCode = new CommandLine(new Translate()).execute(args);
+        System.exit(exitCode);
         
-        new CommandLine(new Translate()).execute("-p", "Hello World!", "-lc", "en");
+        //new CommandLine(new Translate()).execute("-p", "Hello World!", "-lc", "en");
     }
 }
