@@ -18,7 +18,7 @@ public class HandleSingleTarget extends TranslationPrerequisites implements Tran
                 .header("content-type", "application/x-www-form-urlencoded")
                 .header("Accept-Encoding", "application/gzip")
                 .header("X-RapidAPI-Host", "google-translate1.p.rapidapi.com")
-                .header("X-RapidAPI-Key", "663ca5a111msh7c4791d9dff1181p132acdjsn58c849b9b499")
+                .header("X-RapidAPI-Key", "API KEY REMOVED FOR SECURITY REASONS- USE YOUR RAPID API KEY")
 
                 .body(bodyString)
                 .asObject(GoogleTranslateObject.class)
