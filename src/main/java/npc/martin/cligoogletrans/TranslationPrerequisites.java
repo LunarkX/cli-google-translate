@@ -44,15 +44,16 @@ public abstract class TranslationPrerequisites extends Translate {
         languageCodePair.put("sv", "Swedish");    
     }
     
+    //method that will handle destructuring of the response JSON and give results back to user
+    public abstract void destructureJson(String sourceText, GoogleTranslateObject transJSON);
+    
     //nested interface to handle single-target request
     interface SingeTargetRequest {
         public abstract void makeRequest(String ph, String tar);
-        public abstract void destructureJson();
     }
     
     //nested interface to handle multi-target requests
     interface MultiTargetRequest {
         public abstract void makeMutipleRequests(String ph, List<String> lc);
-        public abstract void destructureJson();
     }
 }
