@@ -70,7 +70,7 @@ public class Translate implements Runnable {
                         //making the single request
                         TranslationPrerequisites.createPairs();
                         new HandleSingleTarget().makeRequest(phrase, langCode);
-                    }  
+                    }
                 }
             }
         }    
@@ -80,6 +80,6 @@ public class Translate implements Runnable {
         /*int exitCode = new CommandLine(new Translate()).execute(args);
         System.exit(exitCode);*/
         
-        new CommandLine(new Translate()).execute("-p", "Hello World", "-lc", "es");
+        new CommandLine(new Translate()).execute("-p", "Hello World!", "-lc", "en");
     }
 }
