@@ -59,10 +59,16 @@ public class Translate implements Runnable {
                     } else if(langCodes.size() < 1) {
                         System.out.println("Error! Must provide at least one argument for the -lcs option.");
                     } else {
+                        //first create the language-language_code pairs then call the method responsible for
+                        //making the multiple requests
+                        TranslationPrerequisites.createPairs();
                         new HandleMultiTargets().makeMutipleRequests(phrase, langCodes);
                     }
                 } else if(langCodes.isEmpty()) {
                     if(this.langCode != null) {
+                        //first create the language-language_code pairs then call the method responsible for
+                        //making the single request
+                        TranslationPrerequisites.createPairs();
                         new HandleSingleTarget().makeRequest(phrase, langCode);
                     }  
                 }
@@ -74,6 +80,6 @@ public class Translate implements Runnable {
         /*int exitCode = new CommandLine(new Translate()).execute(args);
         System.exit(exitCode);*/
         
-        new CommandLine(new Translate()).execute("-p", "Hello World", "-lc", "en", "-lcs", "es", "fr", "af");
+        new CommandLine(new Translate()).execute("-p", "Hello World", "-lc", "es");
     }
 }
