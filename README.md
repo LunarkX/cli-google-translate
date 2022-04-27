@@ -99,7 +99,7 @@ Keep these in mind when using these command options
 
 ## LANGUAGE CODES
 As before mentions, we use **language codes** to specify which languages we want to translate into. 
-Not all world languages language codes currently work in this utility. Because of the _freemium_ nature of the Google Translate API, there is a limit (33) as to how many languages you can translate into. 
+Not all world languages language codes currently work in this utility. Because of the _freemium_ nature of the Google Translate API, there is a limit (33) as to how many languages you can translate into. You can however add your own languages support to the code. Use the _world-languages-ordered-by-code_ pdf in this repo for making language code refferences. refferences
 Check out the [Language Codes](https://github.com/LunarkX/cli-google-translate/blob/master/Language%20Codes.txt) list to see a list of the supported languages.
 
 ## KNOWN ISSUES
