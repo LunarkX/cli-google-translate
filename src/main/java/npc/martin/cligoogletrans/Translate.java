@@ -30,6 +30,9 @@ public class Translate implements Runnable {
             description = "Choose up to five languages to translate into.")
     ArrayList<String> langCodes = new ArrayList(5);
     
+    //the next four variables will be used to calculate how long it took a request-display cycle to run
+    long start, end, executionTime; double timeInSeconds;
+    
     @Override
     public void run() {
         //code to handle the options logic and options errors
@@ -61,15 +64,25 @@ public class Translate implements Runnable {
                     } else {
                         //first create the language-language_code pairs then call the method responsible for
                         //making the multiple requests
+                        //we will also take note of the time(seconds) it takes the codes to run
+                        start = System.nanoTime();
                         TranslationPrerequisites.createPairs();
                         new HandleMultiTargets().makeMutipleRequests(phrase, langCodes);
+                        end = System.nanoTime();
+                        timeInSeconds = (long) ((end - start) / 1000000000);
+                        System.out.println("Took " + timeInSeconds + " seconds.");
                     }
                 } else if(langCodes.isEmpty()) {
                     if(this.langCode != null) {
                         //first create the language-language_code pairs then call the method responsible for
                         //making the single request
+                        //we will also take note of the time(seconds) it takes the codes to run
+                        start = System.nanoTime();
                         TranslationPrerequisites.createPairs();
                         new HandleSingleTarget().makeRequest(phrase, langCode);
+                        end = System.nanoTime();
+                        timeInSeconds = (long) ((end - start) / 1000000000);
+                        System.out.println("Took " + timeInSeconds + " seconds.");
                     }
                 }
             }
