@@ -1,8 +1,8 @@
 # CLI/TERMINAL GOOGLE TRANSLATE
 ## WHAT THIS IS
-This is a utility tool, not a replacement for the real [Google Translate](htpps://translate.google.com). It is simply a tool that **helps cut down the hustle of opening a browser just to translate one word or phrase.**.  
+This is a utility, not a replacement for the real [Google Translate](htpps://translate.google.com). It is simply a tool that **helps cut down the hustle of opening a browser just to translate one word or phrase.**.  
 ## NOTE
-This installation as of now is more geared towards Linux machines, or machines that have a JDK/ JVM installed on them.  
+This installation as of now is more geared towards Linux machines, specifically ones that have a JDK/ JVM installed on them.  
 ## INSTALLATION
 ### PREREQUISITES
 - The current installation process **requires that a JDK or a JVM be installed on the target machine**.
