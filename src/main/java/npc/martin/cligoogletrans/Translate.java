@@ -6,19 +6,19 @@ import picocli.CommandLine.Option;
 
 import java.util.ArrayList;
 
-@Command(name = "ggtranslate", mixinStandardHelpOptions = true, version = "Translate 1.0",
+@Command(name = "ggtranslate", mixinStandardHelpOptions = true, version = "Translate 1.0.1",
         description = "Starts this Google translate utility to help you translate words/ phrases")
 public class Translate implements Runnable {
     //option-parameter- phrase/ word to be translated
     //every command must have a phrase
     @Option(names = { "-p", "--phrase" }, paramLabel = "PHRASE", description = "Phrase/ word to be translated.")
-    String phrase;
+    protected String phrase;
     
     //option-parameter- target language
     //cannot be used with the '-lcs' flag
     @Option(names = { "-lc", "--language-code" }, paramLabel = "LANGUAGE CODE", 
             description = "Language being translated to.")
-    String langCode;
+    protected String langCode;
     
     //option- activate interractive mode
     @Option(names = { "-i", "--interractive" }, description = "Run this utility in interractive mode.")
@@ -28,7 +28,7 @@ public class Translate implements Runnable {
     //cannot be used with -lc flag
     @Option(names = { "-lcs", "--language-codes" }, paramLabel = "MULTIPLE LANGUAGE CODES", arity = "1...5",
             description = "Choose up to five languages to translate into.")
-    ArrayList<String> langCodes = new ArrayList(5);
+    protected ArrayList<String> langCodes = new ArrayList<String>(5);
     
     //the next four variables will be used to calculate how long it took a request-display cycle to run
     long start, end, executionTime; double timeInSeconds;
@@ -49,7 +49,13 @@ public class Translate implements Runnable {
         //Remember that the -p flag calls on the class that handles single-target translation
         } else if(this.interractive == false) {
             if(this.phrase == null) {
-                System.out.println("Fatal! The -p flag must be used when -i is not used. Use -h for help.");
+                //5. If both the -p and -i flag are not used, the user should get a guidance message
+                if(this.interractive != true) {
+                    System.out.println("Use 'ggtranslate -h' for help.");
+                } else {
+                    System.out.println("Fatal! The -p flag must be used when -i is not used. Use -h for help.");
+                }
+                
             } else if(this.phrase != null && (this.langCode == null && langCodes.isEmpty())) {
                 System.out.println("Error! The -p flag must be used with either -lc or -lcs flag. Use -h for help.");
             } else if(this.phrase != null && (this.langCode != null && !langCodes.isEmpty())) {
@@ -59,8 +65,6 @@ public class Translate implements Runnable {
                 if(!langCodes.isEmpty()) {
                     if(langCodes.size() > 5) {
                         System.out.println("Error. Provided too many arguments for the -lcs option. Use -h for help.");
-                    } else if(langCodes.size() < 1) {
-                        System.out.println("Error! Must provide at least one argument for the -lcs option.");
                     } else {
                         //first create the language-language_code pairs then call the method responsible for
                         //making the multiple requests
@@ -86,13 +90,13 @@ public class Translate implements Runnable {
                     }
                 }
             }
-        }    
+        } 
     }
     
     public static void main(String[] args) {
-        int exitCode = new CommandLine(new Translate()).execute(args);
-        System.exit(exitCode);
+//        int exitCode = new CommandLine(new Translate()).execute(args);
+//        System.exit(exitCode);
         
-        //new CommandLine(new Translate()).execute("-p", "Hello World!", "-lc", "en");
+        new CommandLine(new Translate()).execute("-p", "Hello World!", "-lcs");
     }
 }
