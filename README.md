@@ -5,7 +5,7 @@ This is a utility, not a replacement for the real [Google Translate](htpps://tra
 This installation as of now is more geared towards Linux machines, specifically ones that have a JDK/ JVM installed on them.  
 
 ## FIXES
-### PATCH 1.0 TO 1.1
+### PATCH 1.0 TO 1.0.1
 1. Fixed weird issues that produced an error whenever the `ggtranslate` command was used without any flag/ option.
 2. Added code to show how long a certain translate process took in seconds.
 3. Improved code fixes.
