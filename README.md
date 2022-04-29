@@ -3,6 +3,12 @@
 This is a utility, not a replacement for the real [Google Translate](htpps://translate.google.com). It is simply a tool that **helps cut down the hustle of opening a browser just to translate one word or phrase.**.  
 ## NOTE
 This installation as of now is more geared towards Linux machines, specifically ones that have a JDK/ JVM installed on them.  
+
+## FIXES
+### PATCH 1.0 TO 1.1
+1. Fixed weird issues that produced an error whenever the `ggtranslate` command was used without any flag/ option.
+2. Added code to show how long a certain translate process took in seconds.
+3. Improved code fixes.
 ## INSTALLATION
 ### PREREQUISITES
 - The current installation process **requires that a JDK or a JVM be installed on the target machine**.
@@ -10,7 +16,7 @@ This installation as of now is more geared towards Linux machines, specifically 
 - A RAPID API key, and a subscription (it's a **freemium**) to use the Google Translate API. To get one, click [here](https://https://rapidapi.com/googlecloud/api/google-translate1/) 
 - Some basic Java (or any programming language) knowledge.
 - A Linux OS. This installation is specifically for Linux.
->Note that if you download the `cligoogletrans-1.0.jar` file in this repository, **you will be capped to translate only 500 CHARACTERS per month**.
+>Note that if you download the `cligoogletrans-1.0.1.jar` file in this repository, **you will be capped to translate only 500 CHARACTERS per month**.
 >**You will also be using my API key for translation** which may bill me. The multiple people that have downloaded the same will be fast depleting the 500 char cap. So consider using procedure A along with your own API key to self-manage these issues. \
 >For those who go ahead and download the jar file from this repository, feel free to skip to procedure A number 9, but take note of the hereby mentioned issues.
 
@@ -34,8 +40,8 @@ This installation as of now is more geared towards Linux machines, specifically 
 ```
 6. Save the file an exit then navigate back outside the parent folder `cligoogletrans-sourcecode`. Rename the folder as `cligoogletrans`.
 7. Compile time. You need [Maven](https://maven.apache.org) for this compileation. If you don't have it installed, please consider installing it using your system's package manager. Go back into the renamed folder and run `mvn clean package` to compile and package the package the project.
-8. You should now see a `target` folder. Navigate into it and there should be two jar files.  Copy the `cligoogletrans-1.0-SNAPSHOT.jar` jar file somewhere else and rename it to `cligoogletrans-1.0.jar`. This is the full package you need to use the utility.
-9. To test the utility jar file, navigate to the folder where the copy (or download if you simply downloaded it from the repo) was placed and run the command `java -jar cligoogletrans-1.0.jar -h`. It should display a simple help message like this:
+8. You should now see a `target` folder. Navigate into it and there should be two jar files.  Copy the `cligoogletrans-1.0.1-SNAPSHOT.jar` jar file somewhere else and rename it to `cligoogletrans-1.0.1.jar`. This is the full package you need to use the utility.
+9. To test the utility jar file, navigate to the folder where the copy (or download if you simply downloaded it from the repo) was placed and run the command `java -jar cligoogletrans-1.0.1.jar -h`. It should display a simple help message like this:
 ```
 Usage: ggtranslate [-hiV] [-lc=LANGUAGE CODE] [-p=PHRASE] [-lcs=MULTIPLE 
                    LANGUAGE CODES...]...
@@ -52,23 +58,23 @@ Starts this Google translate utility to help you translate words/ phrases
 10. Now that we have confirmation the tool works, let's install it in a more use-case-friendly way. Proceed to procedure B.
 
 ### PROCEDURE B
-For those who downloaded the `cligoogletrans-1.0.jar`, as well as those who have come from the end of procedure A, proceed from here.
+For those who downloaded the `cligoogletrans-1.0.1.jar`, as well as those who have come from the end of procedure A, proceed from here.
 1. Copy the renamed (or downloaded) jar file into your `/home/{user}` directory, or in the directory where you store you custom scripts. For me, I have a folder called `.custom_scripts` in my `/home/{user}` directory. We are going to edit the `.bashrc` file with this information.`
 2. Open the `.bashrc` file in your favorite text editor, I will use nano. It(the `.bashrc`) is located in the same `/home/{user}` loacation. So if you're using the terminal, the command would be `nano ~/.bashrc`. If you're using gedit or kate or any other text editor it would be `{text_editor_name} ~/.bashrc` and hit enter.
 3. Once the file is opened, navigate to the very bottom (or to your aliases section) an add the following alias:
 ```
 #ALIAS
-alias ggtranslate="java -jar ~/{path to where you copied the jar file}/cligoogletrans-1.0.jar"
+alias ggtranslate="java -jar ~/{path to where you copied the jar file}/cligoogletrans-1.0.1.jar"
 ```
 For example, my jar is copied into the `/home/.custom_scripts/` folder, so my alias would look like this:
 ```
-alias ggtranslate="java -jar ~/.custom_scripts/cligoogletrans-1.0.jar"
+alias ggtranslate="java -jar ~/.custom_scripts/cligoogletrans-1.0.1.jar"
 ```
 4. Save the file and exit. To effect the changes we have to recompile the `.bashrc` file, so either close and re-open your terminal, or run `source ~/.bashrc` and hit enter. Both ways work. So now the install is complete. So now let's see how to use the utility.
 
 ## USING THE UTILITY
 ### EXAMPLE COMMAND
-Because we have given the `java -jar cligoogletrans-1.0.jar` command a special alias, which is the actual command for the utility, we're going to use the alias name instead of the longer command.
+Because we have given the `java -jar cligoogletrans-1.0.1.jar` command a special alias, which is the actual command for the utility, we're going to use the alias name instead of the longer command.
 Here is an example of how this works:
 From your terminal, enter the command `ggtranslate -p="Hello World" -lc es` and hit enter. After a few seconds, you get a response that looks like this:
 ```
@@ -109,5 +115,5 @@ The following are known issues that will be fixed with later updates:
 Fatal! The -p flag must be used when -i is not used. Use -h for help.
 ```
 2. There is no progress bar/ progress indication mechanism to show as the translation process happens, especially when translating to more than one langages at once.
-3. The is no automatic way to document/ log a user's translation job to their local stprage for later refference.
+3. The is no automatic way to document/ log a user's translation job to their local storage for later refference.
 4. There is a cap on how many characters you can translate in a month. After a paid upgrade to the API, this will be increased accordingly.
